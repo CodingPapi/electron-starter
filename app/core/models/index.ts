@@ -1,13 +1,13 @@
-import UserMgmt, { defaultState as UserState } from 'src/models/userMgmt'
-import Beacon, { defaultState as BeaconState } from 'src/models/beacon'
+import AddDemo, { defaultState as DemoState } from './addDemo'
 import * as dva from './dva'
 export * from './dva'
 
-export const models: Array<dva.Model> = [UserMgmt, Beacon]
+export const models: Array<dva.Model> = [AddDemo /*, Beacon*/]
 
 export const initialState = {
-  userMgmt: UserState,
-  beacon: BeaconState,
+  addDemo: DemoState,
 }
 
-export type GlobalState = Readonly<typeof initialState>
+declare global {
+  type StoreStates = Readonly<typeof initialState>
+}

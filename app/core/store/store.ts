@@ -1,12 +1,6 @@
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import { reducer, initialState } from './reducers/auto-reducer'
+import * as models from '../models'
 
-export const store = createStore<StoreStates, StoreAction<StoreActionsKeys>, unknown, unknown>(
-  reducer,
-  initialState,
-  applyMiddleware(thunk)
-)
+export const store = models.dvaCreateApp().getStore()
 
 declare global {
   type AppStore = typeof store

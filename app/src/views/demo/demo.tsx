@@ -1,11 +1,9 @@
 import * as React from 'react'
 import { Button, Input, Spin, Card } from 'antd'
 
-import { withStore } from '@/src/components'
-
 interface DemoProps extends PageProps, StoreProps {
-  count: StoreStates['count']
-  countAlias: StoreStates['count']
+  count: StoreStates['addDemo']['count']
+  countAlias: StoreStates['addDemo']['count']
 }
 
 declare interface DemoState {
@@ -21,7 +19,6 @@ declare interface DemoState {
  * props 和 state 的默认值需要单独声明
  */
 
-@withStore(['count', { countAlias: 'count' }])
 export default class Demo extends React.Component<DemoProps, DemoState> {
   // state 初始化
   state: DemoState = {
@@ -53,31 +50,10 @@ export default class Demo extends React.Component<DemoProps, DemoState> {
             <Button
               type="primary"
               onClick={() => {
-                this.props.dispatch({ type: 'ACTION_ADD_COUNT', data: reduxCount + 1 })
+                this.props.dispatch({ type: 'addDemo/addSync', payload: { count: reduxCount + 1 } })
               }}
             >
               Add
-            </Button>
-
-            <Button
-              className="ml-16"
-              type="primary"
-              onClick={() => {
-                this.props.dispatch({ type: 'ACTION_ADD_COUNT', data: countAlias + 1 })
-              }}
-            >
-              Add (alias)
-            </Button>
-
-            <Button
-              className="ml-16"
-              type="primary"
-              loading={asyncDispatchLoading}
-              onClick={() => {
-                this.props.dispatch(this.asyncDispatch)
-              }}
-            >
-              Add (async)
             </Button>
           </div>
 
@@ -111,18 +87,6 @@ export default class Demo extends React.Component<DemoProps, DemoState> {
         </Card>
       </div>
     )
-  }
-
-  asyncDispatch = (dispatch: Dispatch): Promise<void> => {
-    return new Promise((resolve) => {
-      this.setState({ asyncDispatchLoading: true })
-      setTimeout(() => {
-        const { count } = this.props
-        dispatch({ type: 'ACTION_ADD_COUNT', data: count + 1 })
-        this.setState({ asyncDispatchLoading: false })
-        resolve()
-      }, 1000)
-    })
   }
 
   openNewWindow = (): void => {
