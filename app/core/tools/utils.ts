@@ -1,4 +1,4 @@
-export const asType = <T>(value: T) => value
+export const asType = <T>(value: T): T => value
 /**
  * 格式化日期
  * @param d

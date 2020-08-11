@@ -8,6 +8,7 @@ declare global {
   namespace NodeJS {
     interface Global {
       __$tools: Tools
+      registered: boolean
     }
   }
 }

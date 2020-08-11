@@ -1,16 +1,21 @@
 import createLoading from 'dva-loading'
 import createImmer from 'dva-immer'
-import { models, initialState, GlobalState } from 'src/models'
+import { models, initialState } from './index'
 import { create } from 'dva-core'
+
+declare global {
+  let $registered: boolean
+}
+
 export interface Options {
   models: Model[]
   // extraReducers: any;
-  initialState: GlobalState
+  initialState: StoreStates
   onError: (e: any) => void
   // onAction: any[];
 }
 
-export function dvaCreateApp() {
+export function dvaCreateApp(): any {
   const options: Options = {
     models,
     initialState,
@@ -35,7 +40,7 @@ export function dvaCreateApp() {
   return app
 }
 
-import { Reducer, Action, ReducersMapObject, Dispatch } from 'redux'
+import { Reducer, Action, AnyAction, ReducersMapObject, Dispatch } from 'redux'
 
 export interface EffectsCommandMap {
   put: <A extends Action>(action: A) => any
@@ -56,6 +61,11 @@ export interface ActionWithPayload {
   action: Action
   payload: any
 }
+
+export type ReducersMapObjectWhichHasPayload<S = any, A extends Action = AnyAction> = {
+  [K in keyof S]: Reducer<S[K], A>
+}
+
 export type EffectType = 'takeEvery' | 'takeLatest' | 'watcher' | 'throttle'
 export type EffectWithType = [Effect, { type: EffectType }]
 export type Effect = (action: ActionWithPayload, effects: EffectsCommandMap) => void
@@ -67,7 +77,7 @@ export interface SubscriptionsMapObject {
 export interface Model {
   namespace: string
   state?: any
-  reducers?: ReducersMapObject | ReducersMapObjectWithEnhancer
+  reducers?: ReducersMapObjectWhichHasPayload | ReducersMapObjectWithEnhancer
   effects?: EffectsMapObject
   subscriptions?: SubscriptionsMapObject
 }

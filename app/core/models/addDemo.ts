@@ -1,5 +1,6 @@
 import { Model } from './dva'
 import { Draft } from 'immer'
+import { asType } from '../tools/utils'
 
 export const defaultState = {
   count: 0,
@@ -7,7 +8,7 @@ export const defaultState = {
 
 export type DemoType = Readonly<typeof defaultState>
 
-export default $tools.asType<Model>({
+export default asType<Model>({
   namespace: 'addDemo',
   state: defaultState,
   effects: {
@@ -25,7 +26,7 @@ export default $tools.asType<Model>({
   },
   reducers: {
     updateCount(state: Draft<DemoType>, { payload }) {
-      state.count = payload.phoneNumber
+      state.count = payload.count
     },
   },
 })

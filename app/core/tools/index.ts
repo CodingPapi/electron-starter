@@ -5,4 +5,4 @@ export * from './utils'
 export * from './window'
 export * from './native-require'
 export * from './settings'
-export * from './dva'
+export let registered: boolean
