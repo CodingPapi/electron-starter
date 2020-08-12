@@ -1,9 +1,11 @@
 import * as React from 'react'
 import { Button, Input, Spin, Card } from 'antd'
 
+import { withStore } from '@/src/components'
+
 interface DemoProps extends PageProps, StoreProps {
-  count: StoreStates['addDemo']['count']
-  countAlias: StoreStates['addDemo']['count']
+  addDemo: StoreStates['addDemo']
+  countAlias: StoreStates['addDemo']
 }
 
 declare interface DemoState {
@@ -19,6 +21,7 @@ declare interface DemoState {
  * props 和 state 的默认值需要单独声明
  */
 
+@withStore(['addDemo', { countAlias: 'addDemo' }])
 export default class Demo extends React.Component<DemoProps, DemoState> {
   // state 初始化
   state: DemoState = {
@@ -39,12 +42,15 @@ export default class Demo extends React.Component<DemoProps, DemoState> {
 
   render(): JSX.Element {
     const { resData, loading, createWindowLoading, asyncDispatchLoading } = this.state
-    const { count: reduxCount, countAlias } = this.props
+    const {
+      addDemo: { count: reduxCount },
+      countAlias,
+    } = this.props
     return (
       <div className="layout-padding">
         <Card title="Redux Test" className="mb-16">
           <p>redux count : {reduxCount}</p>
-          <p>redux countAlias : {countAlias}</p>
+          <p>redux countAlias : {countAlias.count}</p>
 
           <div className="mt-16">
             <Button

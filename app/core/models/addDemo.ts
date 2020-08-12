@@ -18,7 +18,7 @@ export default asType<Model>({
         yield put({
           type: 'updateCount',
           payload: {
-            count: action.payload.count + 1,
+            count: action.payload.count,
           },
         })
       } catch (err) {}
