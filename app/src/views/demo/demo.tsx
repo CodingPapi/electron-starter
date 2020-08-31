@@ -41,7 +41,7 @@ export default class Demo extends React.Component<DemoProps, DemoState> {
   }
 
   render(): JSX.Element {
-    const { resData, loading, createWindowLoading, asyncDispatchLoading } = this.state
+    const { resData, loading, createWindowLoading } = this.state
     const {
       addDemo: { count: reduxCount },
       countAlias,

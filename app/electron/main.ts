@@ -2,6 +2,9 @@ import { app, Tray } from 'electron'
 
 import { creatAppTray } from './tray'
 
+// init @electron/remote
+require('@electron/remote/main').initialize()
+
 $tools.log.info(`Application <${$tools.APP_NAME}> launched.`)
 
 let tray: Tray

@@ -20,5 +20,6 @@ declare namespace NodeJS {
 declare module 'dva-core'
 declare module 'dva-loading'
 declare module 'dva-immer'
+declare module '@electron/remote'
 
 declare const nodeRequire: NodeRequire

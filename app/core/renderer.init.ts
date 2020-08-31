@@ -1,4 +1,4 @@
-import { remote } from 'electron'
+import * as remote from '@electron/remote'
 
 export function initRenderer(): void {
   global.__$tools = remote.getGlobal('__$tools')

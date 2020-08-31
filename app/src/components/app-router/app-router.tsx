@@ -1,5 +1,5 @@
 import React from 'react'
-import { remote } from 'electron'
+import * as remote from '@electron/remote'
 import { HashRouter as Router, Route, Switch, Redirect, RouteComponentProps } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { asyncImport } from '../async-import'
