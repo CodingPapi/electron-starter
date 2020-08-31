@@ -12,7 +12,6 @@ declare interface DemoState {
   resData: Partial<queryTestInfoUsingGET.Response>
   loading: boolean
   createWindowLoading: boolean
-  asyncDispatchLoading: boolean
 }
 
 /**
@@ -28,7 +27,6 @@ export default class Demo extends React.Component<DemoProps, DemoState> {
     resData: {},
     loading: false,
     createWindowLoading: false,
-    asyncDispatchLoading: false,
   }
 
   // 构造函数
