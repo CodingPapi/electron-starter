@@ -3,11 +3,6 @@ import { Button, Input, Spin, Card } from 'antd'
 
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux'
 
-interface MainProps extends PageProps, StoreProps {
-  addDemo: StoreStates['addDemo']
-  countAlias: StoreStates['addDemo']
-}
-
 declare interface MainState {
   resData: Partial<queryTestInfoUsingGET.Response>
   loading: boolean
@@ -20,9 +15,9 @@ declare interface MainState {
  * props 和 state 的默认值需要单独声明
  */
 
-const Index = (props: MainProps) => {
+const Index = (props: PageProps) => {
   const dispatch = useDispatch()
-  const useSelectorTyped: TypedUseSelectorHook<MainProps> = useSelector
+  const useSelectorTyped: TypedUseSelectorHook<StoreStates> = useSelector
   const demoState = useSelectorTyped((state) => state.addDemo)
 
   const [state, setState] = useState<MainState>({
