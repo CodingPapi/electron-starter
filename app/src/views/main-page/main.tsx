@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Input, Spin, Card } from 'antd'
 
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux'
@@ -10,12 +10,11 @@ declare interface MainState {
 }
 
 /**
- * MainProps 是组件的 props 类型声明
+ * PageProps 是组件的 props 类型声明
  * MainState 是组件的 state 类型声明
- * props 和 state 的默认值需要单独声明
  */
 
-const Index = (props: PageProps) => {
+const Index = (_props: PageProps): JSX.Element => {
   const dispatch = useDispatch()
   const useSelectorTyped: TypedUseSelectorHook<StoreStates> = useSelector
   const demoState = useSelectorTyped((state) => state.addDemo)

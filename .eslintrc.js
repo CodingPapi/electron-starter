@@ -60,7 +60,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/no-empty-interface': 0,
     '@typescript-eslint/no-empty-function': 1,
-    '@typescript-eslint/no-unused-vars': 1, // 导入内容未使用
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }], // 导入内容未使用
     '@typescript-eslint/ban-ts-comment': 0, // 禁用 @ts-ignore 等注释
     '@typescript-eslint/ban-types': 1,
   },
