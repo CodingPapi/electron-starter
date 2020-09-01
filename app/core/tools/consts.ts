@@ -31,6 +31,7 @@ export const DEFAULT_WINDOW_OPTIONS: BrowserWindowConstructorOptions = {
   webPreferences: {
     nodeIntegration: true,
     scrollBounce: true,
+    // enable remote module, becasue electron move remote to another project
     enableRemoteModule: true,
   },
   // titleBarStyle: 'hidden', // 隐藏标题栏, 但显示窗口控制按钮
