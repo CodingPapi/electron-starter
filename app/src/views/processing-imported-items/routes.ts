@@ -1,7 +1,7 @@
 const routes: RouteConfig[] = [
   {
-    key: 'MainPage',
-    path: '/main-page',
+    key: 'ProcImpItems',
+    path: '/proc_imp_items',
     createConfig: {
       single: false,
     },
