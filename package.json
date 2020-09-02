@@ -83,6 +83,7 @@
   },
   "homepage": "https://github.com/lanten/electron-antd#readme",
   "dependencies": {
+    "ahooks": "^2.5.0",
     "dva-core": "^2.0.2",
     "dva-immer": "^0.4.19",
     "dva-loading": "^3.0.20",
